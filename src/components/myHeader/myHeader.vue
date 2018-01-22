@@ -19,12 +19,17 @@
 				</div>
 				<div class="supportCount" v-if='seller.supports'>
 					<span class="count">{{seller.supports.length}}个</span>
-					<i></i>
+					<i class="iconfont icon-more"></i>
 				</div>
 			</div>
 		</div>
 		<div class="bulletin-wrapper">
-			
+			<span class="bulletin"></span>
+			<span class="text">{{seller.bulletin}}</span>
+			<i class="iconfont icon-more"></i>
+		</div>
+		<div class="bg">
+			<img :src="seller.avatar">			
 		</div>
 	</div>
 </template>
@@ -60,7 +65,7 @@
 <style type="text/css" lang="scss" scoped>
 	@import "../../common/style/mixin.scss";
 	.content-wrapper {
-		background-color: #000;
+		background-color: rgba(7,17,27,0.5);
 		padding: 24px 12px 18px 24px;
 		color: #FFF;
 		font-size: 0;
@@ -132,13 +137,64 @@
 			}
 			.supportCount {
 				position: absolute;
-				right: 0;
-				top: 100%;
-				width: 48px;
-				height: 24px;
+				right: 12px;
+				bottom: 14px;
+				width: 60px;
+				height: 28px;
 				background-color: rgba(0,0,0,0.2);
+				text-align: center;
+				border-radius: 14px;
+				.count {
+					font-size: 16px;
+					color: #FFF;
+					font-weight: 200;
+					line-height: 28px;
+					margin-right: 2px;
+				}
 			}
 		}
+	}
+	.bulletin-wrapper {
+		height: 28px;
+		background-color: rgba(7,17,27,0.7);
+		color: #FFF;
+		position: relative;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		padding-left: 12px;
+		padding-right: 20px;
+		.bulletin {
+			@include bg-img('./img/bulletin');
+			display: inline-block;
+			vertical-align: middle;
+			width: 22px;
+			height: 12px;
+			margin-right: 4px;
+		}
+		.text {
+			line-height: 28px;
+			font-size: 10px;
+			font-weight: 200;
+			margin-right: 20px;
+		}
+		i {
+			position: absolute;
+			top: 8px;
+			right: 12px;
+		}
 
+	}
+	.bg {
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: -1;
+		width: 100%;
+		img {
+			height: 134px;
+			width: 100%;
+			filter: blur(10px);
+		}
 	}
 </style>
